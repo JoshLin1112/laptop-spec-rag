@@ -1,0 +1,52 @@
+question,category,expected_answer_type
+BXH的顯示卡是什麼型號？,BXH,specific
+BXH的GPU顯存有多大？,BXH,specific
+BXH的顯卡功耗是多少W？,BXH,specific
+BXH配備什麼處理器？,BXH,specific
+BXH的AI Boost時脈是多少？,BXH,specific
+BYH的顯示卡是什麼型號？,BYH,specific
+BYH的GPU顯存有多大？,BYH,specific
+BYH的顯卡功耗是多少W？,BYH,specific
+BYH配備什麼處理器？,BYH,specific
+BYH的AI Boost時脈是多少？,BYH,specific
+BZH的顯示卡是什麼型號？,BZH,specific
+BZH的GPU顯存有多大？,BZH,specific
+BZH的顯卡功耗是多少W？,BZH,specific
+BZH配備什麼處理器？,BZH,specific
+BZH的AI Boost時脈是多少？,BZH,specific
+這台筆電的螢幕規格是什麼？,general,common
+螢幕更新率是多少Hz？,general,common
+螢幕解析度是多少？,general,common
+這台筆電支援什麼無線網路？,general,common
+有沒有WiFi 7？,general,common
+藍牙版本是多少？,general,common
+這台筆電有什麼連接埠？,general,common
+有幾個USB接口？,general,common
+有Thunderbolt嗎？,general,common
+有HDMI輸出嗎？,general,common
+電池容量是多少？,general,common
+變壓器功率是多少W？,general,common
+這台筆電有多重？,general,common
+機身尺寸是多少？,general,common
+記憶體最高支援多少GB？,general,common
+有幾個記憶體插槽？,general,common
+SSD最高可以擴充到多大？,general,common
+有幾個M.2插槽？,general,common
+鍵盤有背光嗎？,general,common
+鍵程是多少mm？,general,common
+視訊鏡頭解析度是多少？,general,common
+支援Windows Hello嗎？,general,common
+喇叭有幾顆？,general,common
+有Dolby Atmos嗎？,general,common
+支援什麼作業系統？,general,common
+機身是什麼顏色？,general,common
+BXH、BYH、BZH有什麼差別？,general,comparison
+哪個型號的顯卡最強？,general,comparison
+三個型號的CPU一樣嗎？,general,comparison
+這台筆電可以玩什麼遊戲？,irrelevant,unsupported
+價格是多少錢？,irrelevant,unsupported
+哪裡可以買到？,irrelevant,unsupported
+有沒有保固？,irrelevant,unsupported
+可以升級CPU嗎？,irrelevant,unsupported
+MacBook Pro和這台哪個好？,irrelevant,unsupported
+這台筆電有什麼缺點？,irrelevant,unsupported

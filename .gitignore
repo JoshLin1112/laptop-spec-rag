@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Data
+synonyms.json
+
+# IDE
+.vscode/
+.idea/
+
+# Test outputs
+tests/results/
+run_experiments.py
+model_download.ipynb
