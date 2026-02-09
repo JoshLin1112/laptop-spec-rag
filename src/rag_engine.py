@@ -137,7 +137,7 @@ class RAGSystem:
         include_full_specs = True
         if deterministic_facts:
             include_full_specs = False
-        if chunk_scores and chunk_scores[0] > 1.2:
+        if chunk_scores and chunk_scores[0] > 0.6:
             include_full_specs = False
         
         # In comparison mode, always include Full Specs
