@@ -14,4 +14,6 @@ synonyms.json
 # Test outputs
 tests/results/
 run_experiments.py
+speed_run_experiment.py
+tests/speed_batch_test.py
 model_download.ipynb
