@@ -96,31 +96,25 @@ class RAGSystem:
                 - 組裝好的上下文字串
                 - 檢索結果元資料列表，每個元素包含 type、content、score
         """
-
+        # Check query type
+        is_comparison = self.query_filter.is_comparison_query(user_question)
+        is_product_list = self.query_filter.is_product_list_query(user_question)
         extracted_product_id = self.product_extractor.extract(user_question)
-        logger.info(f"Router extracted product ID: {extracted_product_id}")
+        # logger.info(f"Router extracted product ID: {extracted_product_id}")
         
         deterministic_facts = []
         retrieval_metadata = []
         
-        # 1. Router (Check if it is a "comparison", "specific product", "List products" or "general question")
-        is_comparison = self.query_filter.is_comparison_query(user_question)
-
+        # 1. Router (Check if it is a "comparison", "List products", "specific product" or "general query")
+        
         if is_comparison:
             # Comparison mode: Directly return ALL Full Specs chunks, skip embedding search
             chunk_results = [c for c in self.chunks if c.metadata.get("key") == "Full Specs"]
             chunk_scores = [1.0] * len(chunk_results)  # Synthetic high score
             logger.info(f"Comparison mode: Returning {len(chunk_results)} Full Specs chunks directly (no search).")
 
-        elif extracted_product_id:
-            # Specific product mode: Only look at this product's chunks, then use embedding search
-            target_chunks_for_search = [c for c in self.chunks if c.metadata.get("product_id") == extracted_product_id]
-            logger.info(f"Strictly filtering to {len(target_chunks_for_search)} chunks for product {extracted_product_id}")
-            chunk_results, chunk_scores = self.index.search(user_question, top_k=getattr(config, "RETRIEVAL_TOP_K", 3), candidate_chunks=target_chunks_for_search)
-        
-
-        elif self.query_filter.is_product_list_query(user_question):
-            # List products mode: Return all products' names + search for general question
+        elif is_product_list:
+            # List products mode: Return all products' names + search for general query
             all_products = self.loader.get_products()
             product_names = [p.get("product_name", "Unknown") for p in all_products]
             product_list_str = ", ".join(product_names)
@@ -128,7 +122,13 @@ class RAGSystem:
             deterministic_facts.append(fact)
             logger.info(f"Product List detected. Injected: {fact}")
             chunk_results, chunk_scores = self.index.search(user_question, top_k=getattr(config, "RETRIEVAL_TOP_K", 3), candidate_chunks=self.chunks)
-        
+
+        elif extracted_product_id:
+            # Specific product mode: Only look at this product's chunks, then use embedding search
+            target_chunks_for_search = [c for c in self.chunks if c.metadata.get("product_id") == extracted_product_id]
+            logger.info(f"Strictly filtering to {len(target_chunks_for_search)} chunks for product {extracted_product_id}")
+            chunk_results, chunk_scores = self.index.search(user_question, top_k=getattr(config, "RETRIEVAL_TOP_K", 3), candidate_chunks=target_chunks_for_search) 
+
         else:
             # General question mode: No product extracted, no list intent -> Search all chunks
             chunk_results, chunk_scores = self.index.search(user_question, top_k=getattr(config, "RETRIEVAL_TOP_K", 3), candidate_chunks=self.chunks)
