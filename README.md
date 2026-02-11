@@ -107,12 +107,12 @@ AORUS MASTER 16 AM6H.html
 ```
 Chunk 範例 :
 ```
-Product: AORUS MASTER 16 BYH
-Category: Processor
-Specification: OS
-Value: Windows 11 Pro (GIGABYTE recommends Windows 11 Pro for business.)
-Windows 11 Home
-UEFI Shell OS
+Product: AORUS MASTER 16 BXH
+Category: Memory
+Specification: RAM
+Value: Up to 64GB DDR5 5600MHz
+* 2x SO-DIMM sockets for expansion
+Related words: RAM、Memory、記憶體、內存
 ```
 
 ### 3.2 檢索與生成的流程
